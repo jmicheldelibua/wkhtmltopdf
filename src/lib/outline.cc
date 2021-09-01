@@ -311,6 +311,12 @@ void Outline::fillHeaderFooterParms(int page, QHash<QString, QString> & parms, c
 	foreach (const SP & rep, ps.replacements)
 		parms[rep.first] = rep.second;
 
+	string text_dorso = "";
+	if(page+off == off+d->pageCount-1 ){	
+		text_dorso = "(Pase al dorso)";
+	}
+	
+	parms["dorso"] = text_dorso;
 	parms["frompage"] = QString::number(off+1);
 	parms["topage"] = QString::number(off+d->pageCount);
 	parms["page" ] = QString::number(page+off);
